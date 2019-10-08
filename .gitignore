@@ -1,0 +1,9 @@
+.idea/
+.score
+.statedb
+exc
+tbears.log
+webapp/__pycache__/
+.DS_Store
+.vscode/
+.env

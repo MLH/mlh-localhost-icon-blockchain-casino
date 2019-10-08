@@ -1,0 +1,18 @@
+{
+  "jsonrpc": "2.0",
+  "method": "icx_sendTransaction",
+  "params": {
+    "version": "0x3",
+    "from": "hxe7af5fcfd8dfc67530a01a0e403882687528dfcb",
+    "value": "0xfff05b59d3b200000000",
+    "stepLimit": "0x200000",
+    "nid": "0x3",
+    "nonce": "0x2",
+    "to": "cx4c83896ab77ee394a72761a39d7c332a6adc05c0",
+    "dataType": "call",
+    "data": {
+      "method": "set_treasury"
+    }
+  },
+  "id": 1
+}
