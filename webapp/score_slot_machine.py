@@ -18,7 +18,6 @@ player_wallet = KeyWallet.load(
     config.PLAYER_WALLET_PRIVATE_KEY_FILE_PATH, config.PLAYER_WALLET_PASSWORD
 )
 
-
 def get_wallet_balance(wallet_address):
     return icon_service.get_balance(wallet_address)
 
@@ -67,7 +66,7 @@ def create_transaction(multiplier=1):
 
     signed_transaction = SignedTransaction(transaction, player_wallet)
     signed_transaction_hash = icon_service.send_transaction(signed_transaction)
-
+    print('Transaction hash: {} '.format(signed_transaction_hash))
     return signed_transaction_hash
 
 

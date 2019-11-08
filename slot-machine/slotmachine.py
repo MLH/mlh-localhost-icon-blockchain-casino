@@ -1,5 +1,4 @@
 from iconservice import *
-from random import *
 
 TAG = "SLOT_MACHINE"
 PAYOUT_MULTIPLIER = 10
@@ -44,7 +43,51 @@ class SlotMachine(IconScoreBase):
     @payable
     @external
     def play(self):
-       # Add code here!
+        amount = self.msg.value
+        balance = self.icx.get_balance(self.address)
+        Logger.info(f"Current Balance {balance}.", TAG)
+
+        if balance <= amount * PAYOUT_MULTIPLIER:
+            revert(f"Balance {balance} not enough to pay a prize.")
+
+        if amount <= 0 or amount > 10 ** 24:
+            revert(f"Betting amount {amount} out of range.")
+
+        payout = min(amount * PAYOUT_MULTIPLIER, balance)
+
+        win = False
+        if balance % 10 == 0:
+            win = True
+    
+        json_result = {
+            "index": self.tx.index,
+            "nonce": self.tx.nonce,
+            "from": str(self.tx.origin),
+            "timestamp": self.tx.timestamp,
+            "txHash": bytes.hex(self.tx.hash),
+            "amount": amount,
+            "result": win,
+        }
+
+        self._play_results_array.put(str(json_result))
+
+        # based on result pay the winner.
+        if win:
+            Logger.info(f"Amount owed to winner: {payout}", TAG)
+
+            try:
+                self.icx.transfer(self.msg.sender, payout)
+                self.FundTransfer(self.msg.sender, payout, False)
+                Logger.info(
+                    f"Player won. Sent winner ({self.msg.sender}) {payout}.", TAG
+                )
+            except:
+                Logger.info(f"Problem. Winnings not sent. Returning bet.", TAG)
+                revert("Problem. Winnings not sent. Returning bet.")
+
+        # else keep the amount in the treasury.
+        else:
+            Logger.info(f"Player lost. ICX retained in treasury.", TAG)
 
     @external(readonly=True)
     def get_results(self) -> dict:

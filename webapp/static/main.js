@@ -1,5 +1,5 @@
 (() => {
-  const CREDIT_IN_ICX = 10 ** 20;
+  const CREDIT_IN_ICX = 10 ** 10;
   const parseJson = data => data.json();
 
   const SlotMachineAPI = {
@@ -65,6 +65,7 @@
 
     updateBalance(balance = 0, { animate = false, hasWon = false } = {}) {
       const credits = Math.floor(balance / CREDIT_IN_ICX);
+      console.log(credits.toString());
       if (animate) {
         this.getCreditsDisplay().addClass(
           `updating ${hasWon ? "win" : "loss"}`
@@ -119,8 +120,15 @@
           score_balance: slotMachineBalance
         } = await SlotMachineAPI.createTransaction(multiplier);
         const hasWon = transaction && transaction.result;
-
-        this.stopSlots(transaction.slots);
+        if (hasWon) {
+          var s = Math.floor(Math.random() * 4); 
+          var slots = [s,s,s];
+        } else {
+          var slots = [Math.floor(Math.random() * 4) + 2, Math.floor(Math.random() * 2), Math.floor(Math.random() * 4)];
+          
+        }
+        console.log(slots)
+        this.stopSlots(slots);
         this.updateDisplay(hasWon ? "WON" : "LOST", hasWon ? "win" : "loss");
         this.updateBalance(balance, { animate: true });
         this.updatePrize(slotMachineBalance, { animate: true });

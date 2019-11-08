@@ -1,5 +1,5 @@
 {
-    "hostAddress": "127.0.0.1",
+    "hostAddress": "https://bicon.net.solidwallet.io/api/v3",
     "port": 9000,
     "scoreRootPath": "./.score",
     "stateDbRootPath": "./.statedb",

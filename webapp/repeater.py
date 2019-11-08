@@ -50,7 +50,7 @@ class RepeatedTimer(object):
 
 def retry(
     exception_to_check: Exception or tuple,
-    tries: int = 10,
+    tries: int = 3,
     delay: int = 1,
     back_off: int = 1,
     logger: Logger = None,
