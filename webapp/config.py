@@ -12,7 +12,7 @@ CASINO_SCORE_ADDRESS = os.getenv(
 PLAYER_WALLET_PRIVATE_KEY_FILE_PATH = os.getenv(
     "PLAYER_WALLET_PRIVATE_KEY_FILE_PATH", "./keystores/keystore1.json"
 )
-PLAYER_WALLET_PASSWORD = os.getenv("PLAYER_WALLET_PASSWORD", "testAccount_1"")
+PLAYER_WALLET_PASSWORD = os.getenv("PLAYER_WALLET_PASSWORD", "test1_Account")
 BET_AMOUNT = int(os.getenv("BET_AMOUNT", 1000))
 DEBUG = bool(os.getenv("DEBUG", True))
 HOST = os.getenv("HOST", "0.0.0.0")
