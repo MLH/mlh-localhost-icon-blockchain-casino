@@ -10,10 +10,11 @@ CASINO_SCORE_ADDRESS = os.getenv(
     "CASINO_SCORE_ADDRESS", "cx0000000000000000000000000000000000000000"
 )
 PLAYER_WALLET_PRIVATE_KEY_FILE_PATH = os.getenv(
-    "PLAYER_WALLET_PRIVATE_KEY_FILE_PATH", "./keystores/test_icx.json"
+    "PLAYER_WALLET_PRIVATE_KEY_FILE_PATH", "./keystores/keystore1.json"
 )
-PLAYER_WALLET_PASSWORD = os.getenv("PLAYER_WALLET_PASSWORD", "Mlh_icon_Bl0ckchain")
+PLAYER_WALLET_PASSWORD = os.getenv("PLAYER_WALLET_PASSWORD", "testAccount_1"")
 BET_AMOUNT = int(os.getenv("BET_AMOUNT", 1000))
 DEBUG = bool(os.getenv("DEBUG", True))
 HOST = os.getenv("HOST", "0.0.0.0")
 PORT = os.getenv("PORT", "5000")
+
