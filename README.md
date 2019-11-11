@@ -22,7 +22,7 @@ Wallet addresses can be found in the ICON Chrome extension or app. They are a lo
 
 In your Morpheus Labs workspace, enter each wallet address on a new line in the file `webapp/participant_wallets.txt`.
 
-For example, if you have 3 participants, your participant_wallets.txt file will look something like this:
+For example, if you have 3 participants, your `participant_wallets.txt` file will look something like this:
 
 ```
 hxac5688caf5a0c9742cffab2311d7b5728c569d10
