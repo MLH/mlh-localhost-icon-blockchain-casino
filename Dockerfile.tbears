@@ -1,9 +1,0 @@
-FROM iconloop/tbears:mainnet
-
-WORKDIR /code
-
-
-COPY tbears-entry.sh /usr/local/bin
-COPY . .
-
-ENTRYPOINT ["tbears-entry.sh"]
